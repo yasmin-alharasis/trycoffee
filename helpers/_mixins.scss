@@ -1,0 +1,83 @@
+@use "../variables/colors" as *;
+
+@mixin centering{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+@mixin button-base {
+    border-radius: 15px;
+    border: none;
+    cursor: pointer;
+    padding: 12px 18px;
+    @include bold;
+}
+@mixin bold {
+    font-weight: bold;
+}
+@mixin bolder {
+    font-weight: 900;
+}
+@mixin btn($btn_name,$position: null) {
+    @include centering;
+    @include button-base;
+    text-transform: capitalize;
+    @if($btn_name == "mac-btn"){
+        gap: 15px;
+        &::after{
+            content: "Download for Mac";
+        }
+        .apple{
+            font-size: 30px;
+        }
+        @if($position == "header"){
+            background-color: $light;
+        } @else {
+            background-color: $dark;
+            color: $light;
+            @include shadow;
+        }
+    } @else if($btn_name =="product__btn"){
+        background-color: transparent;
+        border: 1px solid $primary;
+        color: $primary;
+        gap: 2.5vh;
+        padding: 5px 20px;
+        .badge__left {
+            display: flex;
+            .badge__icon {
+                background-color: $primary;
+                color: white;
+                font-size: 1.5rem;
+                width: 35px;
+                height: 35px;
+                border-radius: 50%;
+                margin-right: 10px; 
+                @include centering;
+            }
+            .badge__text {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: center;
+                .badge__label {
+                    font-size: x-small;
+                    text-transform: uppercase;
+                }
+                .badge__title {
+                    text-transform: capitalize;
+                }
+            }
+        }
+        .badge__right {
+            display: flex;
+            flex-direction: column;
+            .badge__count {
+                font-size: small;
+            }
+        }
+    }   
+}
+@mixin shadow {
+    box-shadow: 0 25px 40px rgba(0, 0, 0, 0.35);
+}

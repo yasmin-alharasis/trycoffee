@@ -1,2 +1,10 @@
-# trycoffee
-Trycoffee, coffee, specialty coffee, cafe, espresso, coffee beans
+# TryCoffee ☕
+
+Landing page for TryCoffee.
+
+## 🚀 Tech Stack
+- HTML
+- SCSS
+
+## 📦 Setup
+Open `index.html` in browser.

@@ -1,0 +1,22 @@
+@use "../helpers/mixins" as *;
+
+.description{
+    padding: 11vh 10vw;
+    p {
+        font-size: 6.5vw;
+        line-height: 102%;
+        @include bolder;
+    }
+    &__btns {
+        display: flex;
+        margin-top: 6vh;
+        gap: 20px;
+        flex-wrap: wrap;
+        &__mac {
+            @include btn("mac-btn","description");
+        }
+        &__product {
+            @include btn("product__btn");
+        }
+    }
+}

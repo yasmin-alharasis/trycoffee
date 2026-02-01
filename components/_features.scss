@@ -1,0 +1,62 @@
+@use "../data/features" as *;
+@use "../helpers/mixins" as *;
+@use "../variables/media" as *;
+
+.features {
+    padding: 8vw 15vw;
+    text-align: center;
+    &__grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 3rem;
+    }
+}
+.feature {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+@each $key, $value in $features {
+    .#{$key} {
+        // position: relative;
+        &::before {
+            content: "";
+            background: url("../asset/features/#{map-get($value,icon)}.svg") no-repeat center;
+            background-size: contain;
+            width: 80px;
+            height: 80px;
+            display: block;
+            margin-bottom: 0.8rem;
+        }
+        &::after {
+            content: "#{map-get($value, title)}"; 
+            font-size: 1.5rem;
+            line-height: 33px;
+            @include bold;
+            position: relative;
+            display: inline-block;
+        }
+        @if map-has-key($value, highlight) and map-get($value, highlight) {
+        &::after {
+          background: url("../asset/features/frame.svg") no-repeat;
+          // background-size: 110% 70%;
+          background-position: center 135%; // ⬅ هنا التحريك لتحت
+          padding: 0.2rem 0.5rem;
+    }
+  }
+}
+}
+@media (max-width: $tablet) {
+  @each $key, $value in $features {
+    .#{$key} {
+      &::after {
+        @if map-has-key($value, highlight) and map-get($value, highlight) {
+          // background-position: right 15%;
+        }
+      }
+    }
+  }
+}
+

@@ -1,0 +1,78 @@
+@use '../variables/media' as *;
+@use '../helpers/mixins' as *;
+.desktop {
+    &__img {
+        width: 100%;
+        margin: 0 auto;// توسيط أفقي
+        padding: 0 4.5vw;
+        background-position: center;
+        position: relative;
+        .background {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 24px;
+        }
+        .apple-icon {
+            position: absolute;
+            top: 1vw;
+            left: 5.5vw;
+        }
+        .status-bar {
+            position: absolute;
+            top: 1vw;
+            right: 5.5vw;
+        }
+        .menu-bar {
+            background-color: rgba(39, 38, 38, 0.8);
+            border-radius: 20px;
+            position: absolute;
+            top: 15vw;
+            left: 6.5vw;
+            width: 20vw;
+            @include shadow;
+        }
+        .app-bar {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            position: absolute;
+            top: 5.5vw;
+            right: 2.5vw;
+            @include shadow;
+            height: auto;
+            width: 17vw;
+        }
+    }
+}
+@media (max-width: $laptop) {
+    .desktop {
+        &__img {
+            .app-bar {
+                top: 6.5vw;
+            }
+        }
+    }
+}
+@media (max-width: $tablet) {
+    .desktop {
+        &__img {
+            .apple-icon{
+                width: 6vw;
+                top: 2vw;
+                left: 6.5vw;
+            }
+            .status-bar {
+                width: 25vw;
+                top: 2vw;
+                right: 6.5vw;
+            }
+            .menu-bar{
+                border-radius: 8px;
+            }
+            .app-bar {
+                top: 8.5vw;
+                border-radius: 8px;
+            }
+        }
+    }
+}

@@ -1,0 +1,62 @@
+// import media
+@use "../variables/media" as *;
+@use "../helpers/mixins" as *;
+@use "../variables/colors" as *;
+
+.navbar{
+    @include centering;
+    padding:  16px 36px;
+    text-transform: capitalize;
+    a {
+        text-decoration: none;
+        color: #000;
+    }
+    &__logo {
+        @include centering;
+    }   
+    &__links{
+        @include centering;
+        margin-left: auto;
+        margin-right: 2vw;
+        list-style: none;
+        gap: 2rem;
+        font-size: 0.5rem;
+    }
+    &__bold {
+        @include bold;
+    }
+    &__mac {
+        @include btn("mac-btn","header");
+    }
+    @media (max-width: $tablet) {
+        padding:  16px 24px;
+        &__logo img{
+            width: 90px;
+            height: auto;
+        }   
+        &__links{
+            gap: 0.9rem;
+        }
+        &__mac {
+            padding: 0;
+            background-color: transparent;
+            position: relative;
+            &::after{
+                content: "Download for Mac";
+                background-color: $light;
+                border-radius: 6px;
+                font-size: 12px;
+                height: auto;
+                position: absolute;
+                bottom: -42px;
+                transform: translateX(-50%);
+                left: 50%;
+                padding: 6px 10px;
+                opacity: 0;
+            }
+            &:hover::after{
+                opacity: 1;
+            }
+        }
+    }
+}
